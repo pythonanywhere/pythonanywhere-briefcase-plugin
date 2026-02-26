@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*'
+  pull_request:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+
+    name: Python ${{ matrix.python-version }}
+    steps:
+    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
+
+    - name: Set up Python
+      run: uv python install ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Test with coverage
+      run: uv run pytest --cov --cov-fail-under=100
+
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
+
+    - name: Set up Python
+      run: uv python install 3.13
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Run pre-commit
+      uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1

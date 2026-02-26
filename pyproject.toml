@@ -1,0 +1,62 @@
+[project]
+name = "briefcase-pythonanywhere"
+version = "0.0.1a1"
+description = "A Briefcase publication channel plugin for deploying static web apps to PythonAnywhere."
+requires-python = ">= 3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    {name = "Filip Lajszczak", email = "filip@lajszczak.dev"},
+]
+keywords = ["briefcase", "pythonanywhere", "deployment", "web", "static"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development",
+]
+dependencies = [
+    "briefcase @ git+https://github.com/beeware/briefcase@fca2cab707794f169b61fe2641d31af262bc5566",
+    "pythonanywhere-core >= 0.3.0",
+]
+
+[build-system]
+requires = ["uv_build >= 0.7.2, < 0.8"]
+build-backend = "uv_build"
+
+[dependency-groups]
+test = [
+    "pytest >= 9.0",
+    "pytest-cov >= 7.0",
+    "pytest-mock >= 3.10",
+    "responses >= 0.25",
+]
+dev = [
+    {include-group = "test"},
+    "ruff >= 0.11",
+]
+
+[project.entry-points."briefcase.channels.web.static"]
+pythonanywhere = "briefcase_pythonanywhere:PythonAnywherePublicationChannel"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+extend-select = [
+    "E", "W", "F", "UP", "B", "I", "RUF",
+]
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["briefcase_pythonanywhere"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

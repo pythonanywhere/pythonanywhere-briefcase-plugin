@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# Virtual environments
+.venv/
+
+# Coverage
+.coverage
+htmlcov/
+
+# MkDocs
+site/
