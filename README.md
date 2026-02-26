@@ -2,6 +2,11 @@
 
 A [Briefcase](https://briefcase.readthedocs.io/) publication channel plugin for deploying static web apps to [PythonAnywhere](https://www.pythonanywhere.com/).
 
+> **Note:** This package depends on the publication channels feature in Briefcase, which has not been included in a release yet. Until it is released, install Briefcase from main:
+> ```
+> pip install git+https://github.com/beeware/briefcase@main
+> ```
+
 ## Prerequisites
 
 * A PythonAnywhere account

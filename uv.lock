@@ -70,12 +70,12 @@ name = "briefcase-pythonanywhere"
 version = "0.0.1a1"
 source = { editable = "." }
 dependencies = [
-    { name = "briefcase" },
     { name = "pythonanywhere-core" },
 ]
 
 [package.dev-dependencies]
 dev = [
+    { name = "briefcase" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
@@ -90,13 +90,11 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "briefcase", git = "https://github.com/beeware/briefcase?rev=fca2cab707794f169b61fe2641d31af262bc5566" },
-    { name = "pythonanywhere-core", specifier = ">=0.3.0" },
-]
+requires-dist = [{ name = "pythonanywhere-core", specifier = ">=0.3.0" }]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "briefcase", git = "https://github.com/beeware/briefcase?rev=fca2cab707794f169b61fe2641d31af262bc5566" },
     { name = "pytest", specifier = ">=9.0" },
     { name = "pytest-cov", specifier = ">=7.0" },
     { name = "pytest-mock", specifier = ">=3.10" },

@@ -1,8 +1,9 @@
 [project]
 name = "briefcase-pythonanywhere"
-version = "0.0.1a1"
+version = "0.0.1a2"
 description = "A Briefcase publication channel plugin for deploying static web apps to PythonAnywhere."
 requires-python = ">= 3.10"
+readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
@@ -22,7 +23,6 @@ classifiers = [
     "Topic :: Software Development",
 ]
 dependencies = [
-    "briefcase @ git+https://github.com/beeware/briefcase@fca2cab707794f169b61fe2641d31af262bc5566",
     "pythonanywhere-core >= 0.3.0",
 ]
 
@@ -39,6 +39,7 @@ test = [
 ]
 dev = [
     {include-group = "test"},
+    "briefcase @ git+https://github.com/beeware/briefcase@fca2cab707794f169b61fe2641d31af262bc5566",
     "ruff >= 0.11",
 ]
 
