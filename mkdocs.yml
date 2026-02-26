@@ -1,13 +1,42 @@
 site_name: briefcase-pythonanywhere
 site_description: A Briefcase publication channel plugin for deploying static web apps to PythonAnywhere.
-site_url: https://pythonanywhere.github.io/briefcase-pythonanywhere/
+site_url: https://briefcase.pythonanywhere.com/
 repo_url: https://github.com/pythonanywhere/briefcase-pythonanywhere
 repo_name: pythonanywhere/briefcase-pythonanywhere
 
-theme:
-  name: material
-
 docs_dir: docs
 
+theme:
+  name: material
+  language: en
+  features:
+    - toc.follow
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
 markdown_extensions:
-  - admonition
+  pymdownx.highlight: {}
+  pymdownx.superfences: {}
+  pymdownx.blocks.admonition: {}
+  pymdownx.details: {}
+  toc:
+    permalink: true
+    title: On this page
