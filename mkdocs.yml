@@ -8,3 +8,6 @@ theme:
   name: material
 
 docs_dir: docs
+
+markdown_extensions:
+  - admonition
