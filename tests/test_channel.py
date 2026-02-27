@@ -187,3 +187,24 @@ def test_publish_updates_existing_webapp(mock_app, mock_command, dist_zip, mocke
         "/", Path("/home/testuser/myapp")
     )
     mock_webapp.reload.assert_called_once()
+
+
+def test_publish_custom_directory(mock_app, mock_command, dist_zip, mocker):
+    mock_app.pythonanywhere_username = "testuser"
+    mock_app.pythonanywhere_directory = "/home/testuser/custom-dir"
+
+    mock_files_cls = mocker.patch("pythonanywhere_briefcase_plugin.channel.Files")
+    mock_webapp_cls = mocker.patch("pythonanywhere_briefcase_plugin.channel.Webapp")
+    mock_webapp_cls.return_value.get.return_value = {"id": 1}
+
+    channel = PythonAnywherePublicationChannel()
+    channel.publish_app(mock_app, mock_command)
+
+    # Files uploaded to custom remote path
+    _, remote_path = mock_files_cls.return_value.tree_post.call_args[0]
+    assert remote_path == "/home/testuser/custom-dir"
+
+    # Static file mapping uses custom path
+    mock_webapp_cls.return_value.create_static_file_mapping.assert_called_once_with(
+        "/", Path("/home/testuser/custom-dir")
+    )

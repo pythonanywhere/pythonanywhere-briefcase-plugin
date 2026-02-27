@@ -6,6 +6,10 @@ repo_name: pythonanywhere/pythonanywhere-briefcase-plugin
 
 docs_dir: docs
 
+nav:
+  - Home: index.md
+  - Tutorial: tutorial.md
+
 theme:
   name: material
   language: en
@@ -36,6 +40,8 @@ markdown_extensions:
   pymdownx.highlight: {}
   pymdownx.superfences: {}
   pymdownx.blocks.admonition: {}
+  pymdownx.blocks.tab:
+    alternate_style: true
   pymdownx.details: {}
   toc:
     permalink: true

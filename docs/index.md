@@ -10,6 +10,8 @@ pip install git+https://github.com/beeware/briefcase@main
 ```
 ///
 
+There is a [tutorial](tutorial.md) that builds on top of the [BeeWare Tutorial](https://tutorial.beeware.org/) and walks you through deploying your first app to PythonAnywhere.
+
 ## Prerequisites
 
 * A PythonAnywhere account
@@ -73,6 +75,15 @@ The domain name for your PythonAnywhere webapp. If not specified, defaults to `<
 ```toml
 [tool.briefcase.app.myapp.pythonanywhere]
 domain = "www.mycustomdomain.com"
+```
+
+### `directory`
+
+The remote directory on PythonAnywhere where the app files will be uploaded. If not specified, defaults to `/home/<username>/<app_name>`.
+
+```toml
+[tool.briefcase.app.myapp.pythonanywhere]
+directory = "/home/mypauser/www"
 ```
 
 ## Environment variables

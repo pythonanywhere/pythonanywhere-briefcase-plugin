@@ -58,7 +58,9 @@ class PythonAnywherePublicationChannel(BasePublicationChannel):
 
         username = self._resolve_username(app)
         domain = self._resolve_domain(app)
-        remote_path = f"/home/{username}/{app.app_name}"
+        remote_path = getattr(app, "pythonanywhere_directory", None)
+        if not remote_path:
+            remote_path = f"/home/{username}/{app.app_name}"
 
         try:
             with tempfile.TemporaryDirectory() as tmpdir:

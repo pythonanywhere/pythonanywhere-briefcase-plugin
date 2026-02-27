@@ -24,6 +24,7 @@ def mock_app(mocker):
     # No pythonanywhere-specific config by default
     del app.pythonanywhere_username
     del app.pythonanywhere_domain
+    del app.pythonanywhere_directory
     return app
 
 

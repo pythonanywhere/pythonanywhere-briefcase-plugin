@@ -1,13 +1,13 @@
 [project]
 name = "pythonanywhere-briefcase-plugin"
-version = "0.0.1a3"
+version = "0.0.1a4"
 description = "A Briefcase publication channel plugin for deploying static web apps to PythonAnywhere."
 requires-python = ">= 3.10"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-    {name = "Filip Lajszczak", email = "filip@lajszczak.dev"},
+    {name = "PythonAnywhere", email = "developers@pythonanywhere.com"},
 ]
 keywords = ["briefcase", "pythonanywhere", "deployment", "web", "static"]
 classifiers = [
@@ -25,6 +25,10 @@ classifiers = [
 dependencies = [
     "pythonanywhere-core >= 0.3.0",
 ]
+
+[project.urls]
+Documentation = "https://briefcase.pythonanywhere.com/"
+Repository = "https://github.com/pythonanywhere/pythonanywhere-briefcase-plugin"
 
 [build-system]
 requires = ["uv_build >= 0.7.2, < 0.8"]
